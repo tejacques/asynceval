@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AsyncEval Test</title>
+    </head>
+    <body>
+        <script src="https://es6-promises.s3.amazonaws.com/es6-promise-2.0.1.js"></script>
+        <script src="src/asynceval.js"></script>
+        <script>
+            (function () {
+
+                var p1 = Promise.resolve(10);
+                var pfn = function (x, y) {
+                    return new Promise(function (resolve, reject) {
+                        setTimeout(function () {
+                            resolve(x);
+                        }, y)
+                    });
+                };
+
+                var asyncfnStr = async(function (time) {
+                    var x = await(p1);
+                    var y = await(pfn(20, time));
+
+                    console.log(x + y);
+                    console.log(time);
+                    return x + y;
+                });
+
+                var asyncfn2 = eval(async(function () {
+                    var x = await(asyncfn(1000));
+
+                    console.log("asyncfn result: ", x);
+
+                    return x;
+                }));
+
+                var asyncfn2 = eval(async(function () {
+                    return await(p1);
+                }));
+
+                var asyncfn = eval(asyncfnStr);
+
+                console.log(asyncfnStr);
+
+                asyncfn(1000).then(function (res) {
+                    console.log(res);
+                });
+                asyncfn(2000);
+                asyncfn(3000);
+                asyncfn(4000);
+                asyncfn2();
+
+                //es7asyncFn = async function(time) {
+                //    var x = await p1;
+                //    var y = await pfn(20, time);
+
+                //    console.log(x+y);
+                //    return x + y;
+                //}
+            })();
+        </script>
+    </body>
+</html>
