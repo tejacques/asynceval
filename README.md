@@ -1,7 +1,7 @@
 asynceval
 ===========
 
-Write es7-style async functions in es5
+Write es7-like async functions in es5
 
 How do I get it?
 ----------------
