@@ -16,7 +16,7 @@ asynceval is a small library for creating es7-style async functions.
 How do I use it?
 ----------------
 
-Using asynceval is fairly simple. You'll need an es6-promise polyfill or native support, and then all you need to do is add a script tag on your page serving asynceval.js before other javascript that uses it, and you're good to go.
+You shouldn't use this, but if you decide you still want to use it anyway, using asynceval is fairly simple. You'll need an es6-promise polyfill or native support, and then all you need to do is add a script tag on your page serving asynceval.js before other javascript that uses it, and you're good to go.
 
 ```.js
 (function () {
