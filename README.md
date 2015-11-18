@@ -25,7 +25,7 @@ You shouldn't use this, but if you decide you still want to use it anyway, using
 
     // async function
     var asyncValueAfter = eval(async(function (x, y) {
-        await async.delay(y);
+        await(async.delay(y));
         return x;
     }));
 
